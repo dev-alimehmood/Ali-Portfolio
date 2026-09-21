@@ -28,7 +28,7 @@ export const HeroSection = () => {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-[85vh] pt-24 sm:pt-28 pb-12 md:py-28 flex flex-col justify-center overflow-hidden"
+      className="relative min-h-[80vh] pt-14 sm:pt-16 pb-10 md:py-20 flex flex-col justify-center overflow-hidden"
     >
       {/* Background Radial Glow Effect */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--color-primary-glow)] rounded-full blur-[160px] pointer-events-none opacity-30 dark:opacity-40" />

@@ -1,37 +1,55 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowDownRight, Sparkles, Send } from 'lucide-react';
 import { MagneticButton } from '../common/MagneticButton';
 import { PROFILE_DATA } from '../../data/profile';
 
 export const HeroContent = () => {
+  const fullText = "ALI MEHMOOD";
+  const [displayText, setDisplayText] = useState("");
+  const [isTypingComplete, setIsTypingComplete] = useState(false);
+
+  useEffect(() => {
+    let index = 0;
+    const timer = setInterval(() => {
+      if (index < fullText.length) {
+        setDisplayText((prev) => fullText.slice(0, index + 1));
+        index++;
+      } else {
+        setIsTypingComplete(true);
+        clearInterval(timer);
+      }
+    }, 90);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  // Render full typewriter string directly or with split space
+  const firstName = displayText.startsWith("ALI ") ? "ALI " : displayText;
+  const lastName = displayText.startsWith("ALI ") ? displayText.slice(4) : "";
+
   return (
     <div className="flex flex-col justify-center space-y-5 md:space-y-6">
 
-      {/* Top Status Label Pill - Executive Emerald Green Availability */}
-      <div className="hero-animate inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-mono font-semibold tracking-widest uppercase shadow-sm w-fit backdrop-blur-md">
-        <span className="relative flex h-2 w-2">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
-        </span>
-        <span>{PROFILE_DATA.status}</span>
-      </div>
 
-      {/* Large Editorial Heading */}
-      <div className="hero-animate space-y-1">
-        <h1 className="text-4xl sm:text-6xl md:text-7xl font-black display-title tracking-tight text-[var(--color-text)] uppercase leading-none">
-          ALI <br />
-          <span className="text-gradient">MEHMOOD</span>
+      {/* Single Line Typewriter Editorial Heading */}
+      <div className="hero-animate space-y-3 pt-2">
+        <h1 className="text-3xl min-[400px]:text-4xl sm:text-5xl md:text-6xl lg:text-5xl xl:text-7xl font-black display-title tracking-tight text-[var(--color-text)] uppercase leading-none whitespace-normal sm:whitespace-nowrap inline-flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3.5">
+          <span>{firstName.trim()}</span>
+          {lastName && <span className="text-gradient">{lastName}</span>}
+          {!isTypingComplete && (
+            <span className="inline-block w-1.5 h-8 sm:h-12 lg:h-14 ml-1 bg-[var(--color-primary-bright)] animate-pulse" />
+          )}
         </h1>
-        <p className="text-lg sm:text-xl md:text-2xl font-display font-semibold text-[var(--color-text-muted)] tracking-tight pt-1 flex flex-wrap items-center gap-1.5">
+        <p className="text-base sm:text-xl md:text-2xl font-display font-semibold text-[var(--color-text-muted)] tracking-tight pt-1 flex flex-wrap items-center gap-1.5 sm:gap-2">
           <span>FULL STACK DEVELOPER</span>
           <span className="text-[var(--color-primary-bright)]">&amp;</span>
           <span>AI AUTOMATION ENGINEER</span>
         </p>
       </div>
 
-      {/* Supporting Text */}
-      <p className="hero-animate max-w-xl text-sm sm:text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed font-normal">
-        {PROFILE_DATA.heroSubtitle}
+      {/* Concise Punchy Supporting Text */}
+      <p className="hero-animate max-w-lg text-sm sm:text-base text-[var(--color-text-muted)] leading-relaxed font-normal">
+        Engineering scalable React/Next.js web applications, NestJS microservices, REST APIs, and automated AI workflows.
       </p>
 
       {/* Action CTA Buttons */}
@@ -65,7 +83,6 @@ export const HeroContent = () => {
           </React.Fragment>
         ))}
       </div>
-
     </div>
   );
 };

@@ -62,7 +62,7 @@ export const PortraitScene = () => {
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-[450px] sm:h-[500px] lg:h-[580px] flex items-center justify-center select-none perspective-1000"
+      className="relative w-full h-[380px] min-[400px]:h-[420px] sm:h-[480px] lg:h-[560px] flex items-center justify-center select-none perspective-1000"
       style={{ perspective: '1200px' }}
     >
       {/* Layer 0: Ambient Background Atmospheric Glow */}

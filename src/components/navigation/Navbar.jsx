@@ -86,25 +86,21 @@ export const Navbar = () => {
         }`}
       >
         <div
-          className={`portfolio-container transition-all duration-500 flex items-center justify-between ${
+          className={`portfolio-container transition-all duration-300 ease-out flex items-center justify-between border ${
             isScrolled
-              ? 'bg-[var(--color-surface)]/90 backdrop-blur-2xl border border-[var(--color-border)] rounded-full px-5 sm:px-6 py-2.5 shadow-2xl shadow-purple-500/10'
-              : 'bg-transparent px-2 sm:px-4 py-1'
+              ? 'bg-[var(--color-surface)]/90 backdrop-blur-2xl border-[var(--color-border)] rounded-full px-5 sm:px-6 py-2.5 shadow-xl shadow-purple-500/5'
+              : 'bg-transparent border-transparent px-2 sm:px-4 py-1.5 rounded-full'
           }`}
         >
-          {/* Brand Wordmark & Active Status Radar */}
+          {/* Brand Wordmark */}
           <a
             href="#"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
-            className="group flex items-center gap-2.5 font-black text-base sm:text-lg tracking-tight text-[var(--color-text)] shrink-0 select-none"
+            className="group flex items-center font-black text-base sm:text-lg tracking-tight text-[var(--color-text)] shrink-0 select-none"
           >
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-            </span>
             <span className="font-display font-extrabold uppercase tracking-widest text-xs sm:text-sm">
               ALI MEHMOOD
             </span>

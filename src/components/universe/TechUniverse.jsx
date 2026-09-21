@@ -1,16 +1,72 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { SKILLS_DATA } from '../../data/skills';
-import { Cpu } from 'lucide-react';
 import { useMediaQuery } from '../../hooks/useMediaQuery';
+import { Atom, Server, Cpu, Database, Cloud, Boxes, Globe, Webhook, BrainCircuit, Sparkles, Code2, Terminal } from 'lucide-react';
 import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const getNodeIcon = (category, name) => {
+  const iconClass = "w-3.5 h-3.5 text-[var(--color-primary-bright)] group-hover:text-white transition-colors shrink-0";
+
+  if (name.includes('React') || name.includes('Next')) {
+    return <Atom className={iconClass} />;
+  }
+  if (name.includes('REST') || name.includes('API') || name.includes('Webhook')) {
+    return <Globe className={iconClass} />;
+  }
+  if (name.includes('Mongo') || name.includes('SQL') || name.includes('Database')) {
+    return <Database className={iconClass} />;
+  }
+  if (name.includes('AI') || name.includes('Agent')) {
+    return <BrainCircuit className={iconClass} />;
+  }
+  if (name.includes('Docker') || name.includes('AWS') || name.includes('Kubernetes') || name.includes('Azure')) {
+    return <Cloud className={iconClass} />;
+  }
+  if (name.includes('Node') || name.includes('Nest') || name.includes('Express')) {
+    return <Server className={iconClass} />;
+  }
+
+  switch (category) {
+    case 'frontend': return <Code2 className={iconClass} />;
+    case 'backend': return <Server className={iconClass} />;
+    case 'database': return <Database className={iconClass} />;
+    case 'devops': return <Boxes className={iconClass} />;
+    case 'ai': return <Sparkles className={iconClass} />;
+    default: return <Terminal className={iconClass} />;
+  }
+};
 
 export const TechUniverse = () => {
   const [activeCategory, setActiveCategory] = useState('all');
   const [hoveredNode, setHoveredNode] = useState(null);
   const isMobile = useMediaQuery('(max-width: 768px)');
-  
   const sectionRef = useRef(null);
-  const avatarImgRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        '.universe-reveal',
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 78%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const categories = [
     { id: 'all', label: 'ALL STACK' },
@@ -34,69 +90,12 @@ export const TechUniverse = () => {
     return { x, y };
   };
 
-  // Full 90-Degree Image 3D Rotation on Cursor Movement
-  useEffect(() => {
-    const section = sectionRef.current;
-    const avatarImg = avatarImgRef.current;
-
-    if (!section || !avatarImg) return;
-
-    const handleMouseMove = (e) => {
-      const rect = section.getBoundingClientRect();
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-
-      // Normalized coordinates (-1 to +1) relative to section center
-      const normX = (e.clientX - centerX) / (rect.width / 2);
-      const normY = (e.clientY - centerY) / (rect.height / 2);
-
-      // Clamp normalized values between -1 and 1
-      const clampedX = Math.max(-1, Math.min(1, normX));
-      const clampedY = Math.max(-1, Math.min(1, normY));
-
-      // Rotate image position 90 degrees tracking cursor movement
-      gsap.to(avatarImg, {
-        rotationY: clampedX * 90,
-        rotationX: -clampedY * 25,
-        scale: 1.15,
-        transformPerspective: 800,
-        transformOrigin: '50% 50%',
-        duration: 0.45,
-        ease: 'power2.out',
-        overwrite: 'auto'
-      });
-    };
-
-    const handleMouseLeave = () => {
-      // Smooth reset back to front-facing center (0 degrees)
-      gsap.to(avatarImg, {
-        rotationY: 0,
-        rotationX: 0,
-        scale: 1,
-        duration: 0.8,
-        ease: 'power3.out',
-        overwrite: 'auto'
-      });
-    };
-
-    section.addEventListener('mousemove', handleMouseMove);
-    section.addEventListener('mouseleave', handleMouseLeave);
-
-    return () => {
-      section.removeEventListener('mousemove', handleMouseMove);
-      section.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
-
   return (
-    <section
-      ref={sectionRef}
-      className="py-24 md:py-36 border-t border-[var(--color-border)] relative overflow-hidden"
-    >
+    <section ref={sectionRef} className="py-24 md:py-36 border-t border-[var(--color-border)] relative overflow-hidden">
       <div className="portfolio-container">
         
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 md:mb-16 gap-6">
+        <div className="universe-reveal flex flex-col lg:flex-row lg:items-end justify-between mb-12 md:mb-16 gap-6">
           <div>
             <div className="flex items-center gap-3 mb-4">
               <span className="editorial-label">TECHNICAL UNIVERSE</span>
@@ -126,7 +125,7 @@ export const TechUniverse = () => {
         </div>
 
         {/* Ecosystem Stage Container */}
-        <div className="relative min-h-[580px] sm:min-h-[680px] rounded-3xl border border-[var(--color-border)] bg-gradient-to-b from-[var(--color-surface)]/80 to-[var(--color-bg)] p-6 sm:p-12 overflow-hidden flex items-center justify-center shadow-2xl">
+        <div className="universe-reveal relative min-h-[580px] sm:min-h-[680px] rounded-3xl border border-[var(--color-border)] bg-gradient-to-b from-[var(--color-surface)]/80 to-[var(--color-bg)] p-6 sm:p-12 overflow-hidden flex items-center justify-center shadow-2xl">
           
           {/* Ambient Background Radial Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[var(--color-primary-glow)] rounded-full blur-[170px] pointer-events-none opacity-60" />
@@ -137,21 +136,20 @@ export const TechUniverse = () => {
             <div className="absolute w-[480px] h-[480px] md:w-[600px] md:h-[600px] rounded-full border border-[var(--color-border)]" />
           </div>
 
-          {/* Fixed Outer Developer Core (Card Frame does NOT move) */}
+          {/* Fixed Outer Developer Core */}
           <div className="relative z-20 flex flex-col items-center justify-center text-center pointer-events-auto">
             
-            {/* Stationary Outer Holographic Glow Ring */}
-            <div className="relative w-44 h-44 sm:w-56 sm:h-56 rounded-full p-1.5 bg-gradient-to-tr from-[var(--color-primary-deep)] via-[var(--color-primary-bright)] to-[var(--color-primary)] shadow-[0_0_45px_#9400D3] animate-pulse-glow">
+            {/* Outer Holographic Glow Ring */}
+            <div className="relative w-44 h-44 sm:w-56 sm:h-56 rounded-full p-1.5 bg-gradient-to-tr from-[var(--color-primary-deep)] via-[var(--color-primary-bright)] to-[var(--color-primary)] shadow-[0_0_45px_#9400D3]">
               
-              {/* Stationary Inner Glass Frame */}
+              {/* Inner Glass Frame */}
               <div className="w-full h-full rounded-full overflow-hidden border-2 border-white/30 bg-[#09070D] relative flex items-center justify-center shadow-2xl">
                 
-                {/* 90-Degree Rotating Portrait Image */}
+                {/* Static Portrait Image */}
                 <img
-                  ref={avatarImgRef}
                   src="/avatar.jpg"
                   alt="Ali Mehmood Portrait"
-                  className="w-full h-full object-cover object-center transform-gpu shadow-2xl"
+                  className="w-full h-full object-cover object-center shadow-2xl"
                   onError={(e) => {
                     e.target.onerror = null;
                     e.target.src = '/img.jpeg';
@@ -170,9 +168,9 @@ export const TechUniverse = () => {
 
             </div>
 
-            {/* Stationary Developer Identity Label Pill */}
+            {/* Developer Identity Label Pill */}
             <div className="mt-4 px-4 py-1.5 rounded-full glass-panel border border-[var(--color-border-glow)] text-center shadow-lg pointer-events-none">
-              <span className="text-xs font-bold font-display tracking-wider text-white uppercase block">
+              <span className="text-xs font-bold font-display tracking-wider text-[var(--color-text)] uppercase block">
                 ALI MEHMOOD
               </span>
               <span className="text-[10px] font-mono text-[var(--color-primary-bright)] uppercase tracking-widest block">
@@ -188,6 +186,7 @@ export const TechUniverse = () => {
               {filteredNodes.map((node, index) => {
                 const { x, y } = getNodeOrbitPosition(index, filteredNodes.length);
                 const isHovered = hoveredNode === node.name;
+                const icon = getNodeIcon(node.category, node.name);
 
                 return (
                   <div
@@ -197,7 +196,7 @@ export const TechUniverse = () => {
                     style={{
                       transform: `translate(${x}px, ${y}px)`,
                     }}
-                    className={`absolute px-4 py-2 rounded-full text-xs font-mono font-semibold tracking-wide transition-all duration-500 cursor-pointer shadow-xl backdrop-blur-md flex items-center gap-2 group ${
+                    className={`absolute px-4 py-2 rounded-full text-xs font-mono font-semibold tracking-wide transition-all duration-300 cursor-pointer shadow-xl backdrop-blur-md flex items-center gap-2 group ${
                       isHovered
                         ? 'bg-[var(--color-primary)] text-white border-2 border-[var(--color-primary-bright)] scale-110 z-30 shadow-[0_0_30px_#9400D3]'
                         : node.highlight
@@ -205,11 +204,7 @@ export const TechUniverse = () => {
                         : 'border border-[var(--color-border)] bg-[var(--color-surface)]/90 text-[var(--color-text-muted)] hover:border-[var(--color-primary-bright)] hover:text-[var(--color-text)]'
                     }`}
                   >
-                    <span
-                      className={`w-2 h-2 rounded-full transition-colors ${
-                        isHovered || node.highlight ? 'bg-[var(--color-primary-bright)] animate-pulse' : 'bg-white/40'
-                      }`}
-                    />
+                    {icon}
                     <span>{node.name}</span>
                   </div>
                 );
@@ -218,21 +213,23 @@ export const TechUniverse = () => {
           ) : (
             /* Clean Mobile Responsive Badge Matrix */
             <div className="w-full max-w-xl flex flex-wrap items-center justify-center gap-2.5 pt-8 relative z-10">
-              {filteredNodes.map((node) => (
-                <div
-                  key={node.name}
-                  className={`px-3.5 py-2 rounded-full text-xs font-mono font-semibold border ${
-                    node.highlight
-                      ? 'border-[var(--color-primary-bright)] bg-[var(--color-surface)] text-[var(--color-text)]'
-                      : 'border-[var(--color-border)] bg-[var(--color-surface)]/60 text-[var(--color-text-muted)]'
-                  }`}
-                >
-                  <span className="flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-primary-bright)]" />
-                    {node.name}
-                  </span>
-                </div>
-              ))}
+              {filteredNodes.map((node) => {
+                const icon = getNodeIcon(node.category, node.name);
+
+                return (
+                  <div
+                    key={node.name}
+                    className={`px-3.5 py-2 rounded-full text-xs font-mono font-semibold border flex items-center gap-2 group ${
+                      node.highlight
+                        ? 'border-[var(--color-primary-bright)] bg-[var(--color-surface)] text-[var(--color-text)]'
+                        : 'border-[var(--color-border)] bg-[var(--color-surface)]/60 text-[var(--color-text-muted)]'
+                    }`}
+                  >
+                    {icon}
+                    <span>{node.name}</span>
+                  </div>
+                );
+              })}
             </div>
           )}
 

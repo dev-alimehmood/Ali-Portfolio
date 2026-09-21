@@ -1,13 +1,42 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { ArrowUpRight, Mail, MapPin, Send } from 'lucide-react';
 import { MagneticButton } from '../common/MagneticButton';
 import { GithubIcon, LinkedinIcon } from '../common/SocialIcons';
 import { PROFILE_DATA } from '../../data/profile';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const ContactSection = () => {
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        '.contact-reveal',
+        { opacity: 0, y: 40 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          stagger: 0.15,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top 78%',
+            toggleActions: 'play none none reverse',
+          },
+        }
+      );
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
   return (
     <section
       id="contact"
+      ref={sectionRef}
       className="py-24 md:py-36 border-t border-[var(--color-border)] relative overflow-hidden"
     >
       {/* Background Large Violet Radial Glow */}
@@ -19,24 +48,24 @@ export const ContactSection = () => {
           
           {/* Main Headline & Supporting Callout */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="flex items-center gap-3">
+            <div className="contact-reveal flex items-center gap-3">
               <span className="editorial-label">05 / CONTACT</span>
               <div className="h-[1px] w-12 bg-[var(--color-primary-bright)]" />
             </div>
 
-            <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold display-title tracking-tight text-[var(--color-text)] uppercase leading-[1.05]">
+            <h2 className="contact-reveal text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold display-title tracking-tight text-[var(--color-text)] uppercase leading-[1.05]">
               LET'S BUILD <br />
               <span className="text-gradient">SOMETHING</span> <br />
               REMARKABLE.
             </h2>
 
-            <p className="max-w-xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed font-normal">
+            <p className="contact-reveal max-w-xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed font-normal">
               Have an idea, product engineering opportunity, or AI automation workflow worth building? Let's connect and execute.
             </p>
           </div>
 
           {/* Action Callout & Links */}
-          <div className="lg:col-span-5 flex flex-col items-start gap-6 p-6 sm:p-8 rounded-3xl glass-panel border border-[var(--color-border-glow)] shadow-2xl">
+          <div className="contact-reveal lg:col-span-5 flex flex-col items-start gap-6 p-6 sm:p-8 rounded-3xl glass-panel border border-[var(--color-border-glow)] shadow-2xl">
             <MagneticButton
               href={`mailto:${PROFILE_DATA.email}`}
               className="w-full py-4 sm:py-5 rounded-full text-xs font-bold uppercase tracking-widest bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-bright)] transition-all shadow-xl shadow-[var(--color-primary-glow)] group"

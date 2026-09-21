@@ -10,11 +10,10 @@ export const GlassLayers = ({ parallaxOffset = { x: 0, y: 0 }, isHovered = false
     >
       {/* Sleek Offset Architectural Panel Backing */}
       <div
-        className={`w-[78%] sm:w-[82%] h-[84%] sm:h-[88%] rounded-[36px] border border-[var(--color-border)] bg-[var(--color-surface)]/60 backdrop-blur-xl transition-all duration-700 ${
-          isHovered
+        className={`w-[78%] sm:w-[82%] h-[84%] sm:h-[88%] rounded-[36px] border border-[var(--color-border)] bg-[var(--color-surface)]/60 backdrop-blur-xl transition-all duration-700 ${isHovered
             ? 'translate-x-3 -translate-y-3 border-[var(--color-primary-bright)]/40 shadow-2xl shadow-[var(--color-primary-glow)]'
             : 'translate-x-1.5 -translate-y-1.5'
-        }`}
+          }`}
       />
     </div>
   );

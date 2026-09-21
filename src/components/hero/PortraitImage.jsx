@@ -8,23 +8,30 @@ export const PortraitImage = ({
 }) => {
   return (
     <div
-      className="relative z-20 w-[78%] sm:w-[82%] h-[84%] sm:h-[88%] rounded-[32px] transition-all duration-500 ease-out group transform-gpu"
+      className="relative z-20 w-[88%] min-[400px]:w-[84%] sm:w-[82%] h-[88%] sm:h-[90%] rounded-[28px] sm:rounded-[32px] transition-all duration-500 ease-out group transform-gpu"
       style={{
-        transform: `translate3d(${parallaxOffset.x * 1.0}px, ${parallaxOffset.y * 1.0}px, 0) rotateX(${
-          parallaxOffset.rotateX
-        }deg) rotateY(${parallaxOffset.rotateY}deg) scale(${isHovered ? 1.02 : 1.0})`,
+        transform: `translate3d(${parallaxOffset.x * 1.0}px, ${parallaxOffset.y * 1.0}px, 0) rotateX(${parallaxOffset.rotateX
+          }deg) rotateY(${parallaxOffset.rotateY}deg) scale(${isHovered ? 1.02 : 1.0})`,
         transformStyle: 'preserve-3d',
       }}
     >
       {/* Sleek Outer Border Frame - Theme Aware */}
       <div
-        className={`absolute -inset-[1px] rounded-[33px] bg-gradient-to-b from-white/20 via-[var(--color-border)] to-[var(--color-primary)]/20 transition-all duration-500 pointer-events-none ${
-          isHovered ? 'from-emerald-400/50 via-[var(--color-primary)]/40 to-blue-500/50 shadow-2xl shadow-emerald-500/20' : ''
-        }`}
+        className={`absolute -inset-[1px] rounded-[33px] bg-gradient-to-b from-white/20 via-[var(--color-border)] to-[var(--color-primary)]/20 transition-all duration-500 pointer-events-none ${isHovered ? 'from-emerald-400/50 via-[var(--color-primary)]/40 to-blue-500/50 shadow-2xl shadow-emerald-500/20' : ''
+          }`}
       />
 
       {/* Main Portrait Card Container */}
       <div className="relative w-full h-full rounded-[32px] overflow-hidden bg-[var(--color-surface)] border border-[var(--color-border)] shadow-2xl">
+        {/* Top Embedded "AVAILABLE FOR OPPORTUNITIES" Premium Glass Badge */}
+        <div className="absolute top-3 left-1/2 -translate-x-1/2 z-30 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-emerald-500/40 bg-emerald-950/80 text-emerald-400 font-mono text-[10px] font-semibold tracking-widest uppercase shadow-xl backdrop-blur-md">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+          </span>
+          <span className="whitespace-nowrap">AVAILABLE FOR OPPORTUNITIES</span>
+        </div>
+
         {/* High-Resolution Portrait Image */}
         <img
           src={imageSrc}
@@ -47,7 +54,7 @@ export const PortraitImage = ({
               <span className="text-[9px] font-mono text-[var(--color-text-muted)] uppercase tracking-wider">FULL STACK & AI</span>
             </div>
           </div>
-          
+
           {/* Executive Emerald Verified Badge */}
           <span className="inline-flex items-center gap-1 text-[9px] font-mono font-bold px-2.5 py-1 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/40 shadow-sm">
             <CheckCircle2 className="w-3 h-3 text-emerald-500" />
