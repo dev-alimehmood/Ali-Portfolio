@@ -89,8 +89,8 @@ export const Navbar = () => {
       >
         <div
           className={`portfolio-container transition-all duration-300 ease-out flex items-center justify-between border ${isScrolled
-              ? 'bg-[var(--color-surface)]/90 backdrop-blur-2xl border-[var(--color-border)] rounded-full px-5 sm:px-6 py-2.5 shadow-xl shadow-purple-500/5'
-              : 'bg-transparent border-transparent px-2 sm:px-4 py-1.5 rounded-full'
+            ? 'bg-[var(--color-surface)]/90 backdrop-blur-2xl border-[var(--color-border)] rounded-full px-5 sm:px-6 py-2.5 shadow-xl shadow-purple-500/5'
+            : 'bg-transparent border-transparent px-2 sm:px-4 py-1.5 rounded-full'
             }`}
         >
           {/* Brand Wordmark */}
@@ -118,8 +118,8 @@ export const Navbar = () => {
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
                   className={`text-xs font-mono font-semibold tracking-widest transition-all relative py-1 ${isActive
-                      ? 'text-[var(--color-primary-bright)] font-bold'
-                      : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
+                    ? 'text-[var(--color-primary-bright)] font-bold'
+                    : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
                     }`}
                 >
                   {link.label}
