@@ -32,10 +32,10 @@ export const Footer = () => {
       <div className="absolute bottom-0 left-1/4 w-[400px] h-[200px] bg-gradient-to-tr from-blue-900/20 to-purple-900/20 blur-[140px] pointer-events-none" />
 
       <div className="portfolio-container relative z-10 space-y-12">
-        
+
         {/* Main 3-Column Luxury Dark Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-start justify-between">
-          
+
           {/* Column 1: Brand Identity & Radar Status */}
           <div className="md:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
@@ -69,12 +69,15 @@ export const Footer = () => {
             </span>
             <ul className="space-y-2 text-xs">
               {[
-                { label: 'WORK', href: '#projects' },
+                { label: 'HOME', href: '#hero' },
                 { label: 'ABOUT', href: '#about' },
+                { label: 'WORK', href: '#projects' },
                 { label: 'EXPERIENCE', href: '#experience' },
                 { label: 'EXPERTISE', href: '#expertise' },
                 { label: 'CONTACT', href: '#contact' },
               ].map((link) => (
+
+
                 <li key={link.label}>
                   <a
                     href={link.href}

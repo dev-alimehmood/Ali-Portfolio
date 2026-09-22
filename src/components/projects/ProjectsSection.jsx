@@ -1,13 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { ArrowUpRight, ExternalLink } from 'lucide-react';
 import { PROJECTS_DATA } from '../../data/projects';
 import { ProjectVisualComposition } from './ProjectVisualComposition';
 import { ProjectModal } from '../common/ProjectModal';
 import { MagneticButton } from '../common/MagneticButton';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { RevealBottom, RevealRight } from '../common/ScrollAnimations';
 
 const GithubIcon = ({ className = "w-4 h-4" }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -18,37 +15,10 @@ const GithubIcon = ({ className = "w-4 h-4" }) => (
 
 export const ProjectsSection = () => {
   const [selectedProject, setSelectedProject] = useState(null);
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const items = gsap.utils.toArray('.project-showcase-item');
-      items.forEach((item) => {
-        gsap.fromTo(
-          item,
-          { opacity: 0, y: 50 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.9,
-            ease: 'power3.out',
-            scrollTrigger: {
-              trigger: item,
-              start: 'top 82%',
-              toggleActions: 'play none none reverse',
-            },
-          }
-        );
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section
       id="projects"
-      ref={sectionRef}
       className="py-24 md:py-36 border-t border-[var(--color-border)] relative overflow-hidden"
     >
       {/* Background Soft Glow */}
@@ -58,7 +28,7 @@ export const ProjectsSection = () => {
         
         {/* Section Editorial Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
-          <div>
+          <RevealBottom>
             <div className="flex items-center gap-3 mb-4">
               <span className="editorial-label">02 / SELECTED WORK</span>
               <div className="h-[1px] w-12 bg-[var(--color-primary-bright)]" />
@@ -66,10 +36,12 @@ export const ProjectsSection = () => {
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-black display-title tracking-tight text-[var(--color-text)] uppercase leading-none">
               FEATURED <span className="text-gradient">ENGINEERING</span>
             </h2>
-          </div>
-          <p className="max-w-md text-sm md:text-base text-[var(--color-text-muted)] font-normal leading-relaxed">
-            A curated showcase of scalable full-stack web platforms, real-time WebSocket applications, AI document engines, and enterprise software.
-          </p>
+          </RevealBottom>
+          <RevealRight distance={50} delay={0.15}>
+            <p className="max-w-md text-sm md:text-base text-[var(--color-text-muted)] font-normal leading-relaxed">
+              A curated showcase of scalable full-stack web platforms, real-time WebSocket applications, AI document engines, and enterprise software.
+            </p>
+          </RevealRight>
         </div>
 
         {/* Large Vertical Project Showcases */}
@@ -80,13 +52,14 @@ export const ProjectsSection = () => {
             return (
               <div
                 key={project.id}
-                className="project-showcase-item group grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
+                className="group grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center"
               >
-                {/* Text Content Column */}
-                <div
+                {/* Text Content Column (Revealing Bottom to Top or Right based on layout) */}
+                <RevealBottom
                   className={`lg:col-span-5 space-y-6 ${
                     isEven ? 'lg:order-1' : 'lg:order-2'
                   }`}
+                  distance={45}
                 >
                   <div className="flex items-center gap-3">
                     <span className="text-3xl md:text-4xl font-extrabold font-mono text-[var(--color-primary-bright)]">
@@ -153,13 +126,14 @@ export const ProjectsSection = () => {
                       </a>
                     )}
                   </div>
-                </div>
+                </RevealBottom>
 
-                {/* Visual Composition Column */}
-                <div
+                {/* Visual Composition Column (Revealing from Right) */}
+                <RevealRight
                   className={`lg:col-span-7 ${
                     isEven ? 'lg:order-2' : 'lg:order-1'
                   }`}
+                  distance={60}
                 >
                   <div
                     onClick={() => setSelectedProject(project)}
@@ -167,7 +141,7 @@ export const ProjectsSection = () => {
                   >
                     <ProjectVisualComposition type={project.visualType} />
                   </div>
-                </div>
+                </RevealRight>
               </div>
             );
           })}
@@ -185,3 +159,4 @@ export const ProjectsSection = () => {
     </section>
   );
 };
+

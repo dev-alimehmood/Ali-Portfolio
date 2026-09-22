@@ -1,42 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { ArrowUpRight, Mail, MapPin, Send } from 'lucide-react';
 import { MagneticButton } from '../common/MagneticButton';
 import { GithubIcon, LinkedinIcon } from '../common/SocialIcons';
 import { PROFILE_DATA } from '../../data/profile';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-gsap.registerPlugin(ScrollTrigger);
+import { RevealBottom, RevealRight } from '../common/ScrollAnimations';
 
 export const ContactSection = () => {
-  const sectionRef = useRef(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.contact-reveal',
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.9,
-          stagger: 0.15,
-          ease: 'power3.out',
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: 'top 78%',
-            toggleActions: 'play none none reverse',
-          },
-        }
-      );
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
   return (
     <section
       id="contact"
-      ref={sectionRef}
       className="py-24 md:py-36 border-t border-[var(--color-border)] relative overflow-hidden"
     >
       {/* Background Large Violet Radial Glow */}
@@ -46,35 +18,44 @@ export const ContactSection = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* Main Headline & Supporting Callout */}
+          {/* Main Headline & Supporting Callout (Coming from Bottom) */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="contact-reveal flex items-center gap-3">
+            <RevealBottom className="flex items-center gap-3">
               <span className="editorial-label">05 / CONTACT</span>
               <div className="h-[1px] w-12 bg-[var(--color-primary-bright)]" />
-            </div>
+            </RevealBottom>
 
-            <h2 className="contact-reveal text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold display-title tracking-tight text-[var(--color-text)] uppercase leading-[1.05]">
-              LET'S BUILD <br />
-              <span className="text-gradient">SOMETHING</span> <br />
-              REMARKABLE.
-            </h2>
+            <RevealBottom distance={50} delay={0.1}>
+              <h2 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold display-title tracking-tight text-[var(--color-text)] uppercase leading-[1.05]">
+                LET'S BUILD <br />
+                <span className="text-gradient">SOMETHING</span> <br />
+                REMARKABLE.
+              </h2>
+            </RevealBottom>
 
-            <p className="contact-reveal max-w-xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed font-normal">
-              Have an idea, product engineering opportunity, or AI automation workflow worth building? Let's connect and execute.
-            </p>
+            <RevealBottom distance={40} delay={0.2}>
+              <p className="max-w-xl text-base md:text-lg text-[var(--color-text-muted)] leading-relaxed font-normal">
+                Have an idea, product engineering opportunity, or AI automation workflow worth building? Let's connect and execute.
+              </p>
+            </RevealBottom>
           </div>
 
-          {/* Action Callout & Links */}
-          <div className="contact-reveal lg:col-span-5 flex flex-col items-start gap-6 p-6 sm:p-8 rounded-3xl glass-panel border border-[var(--color-border-glow)] shadow-2xl">
-            <MagneticButton
-              href={`mailto:${PROFILE_DATA.email}`}
-              className="w-full py-4 sm:py-5 rounded-full text-xs font-bold uppercase tracking-widest bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-bright)] transition-all shadow-xl shadow-[var(--color-primary-glow)] group"
-            >
-              <span>START A CONVERSATION</span>
-              <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </MagneticButton>
+          {/* Action Callout & Links (Coming from Right) */}
+          <RevealRight className="lg:col-span-5 flex flex-col items-start gap-6 p-6 sm:p-8 rounded-3xl glass-panel border border-[var(--color-border-glow)] shadow-2xl relative z-10" distance={60} delay={0.25}>
+            <div className="w-full relative py-1 px-1">
+              <MagneticButton
+                href={`mailto:${PROFILE_DATA.email}`}
+                strength={0.15}
+                className="w-full py-4 sm:py-5 rounded-full text-xs font-bold uppercase tracking-widest bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-bright)] transition-colors shadow-xl shadow-[var(--color-primary-glow)] group"
+              >
+                <span>START A CONVERSATION</span>
+                <ArrowUpRight className="w-4 h-4 ml-2 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </MagneticButton>
+            </div>
 
             <div className="w-full space-y-4 pt-4 border-t border-[var(--color-border)]">
+
+
               <a
                 href={`mailto:${PROFILE_DATA.email}`}
                 className="flex items-center gap-3 text-xs sm:text-sm font-mono text-[var(--color-text-muted)] hover:text-[var(--color-primary-bright)] transition-colors"
@@ -103,7 +84,7 @@ export const ContactSection = () => {
                 <span>github.com/dev-alimehmood</span>
               </a>
             </div>
-          </div>
+          </RevealRight>
 
         </div>
 
@@ -111,3 +92,4 @@ export const ContactSection = () => {
     </section>
   );
 };
+

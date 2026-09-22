@@ -13,31 +13,41 @@ export const MagneticButton = ({
 }) => {
   const magneticRef = useMagnetic(strength);
 
-  const baseStyle = `inline-flex items-center justify-center relative overflow-hidden group transition-all duration-300 select-none ${className}`;
+  const baseStyle = `inline-flex items-center justify-center relative select-none z-10 hover:z-30 ${className}`;
 
   if (href) {
     return (
       <a
-        ref={magneticRef}
         href={href}
         target={target}
         rel={rel}
         className={baseStyle}
         {...props}
       >
-        {children}
+        <span
+          ref={magneticRef}
+          className="inline-flex items-center justify-center w-full h-full"
+        >
+          {children}
+        </span>
       </a>
     );
   }
 
   return (
     <button
-      ref={magneticRef}
       onClick={onClick}
       className={baseStyle}
       {...props}
     >
-      {children}
+      <span
+        ref={magneticRef}
+        className="inline-flex items-center justify-center w-full h-full"
+      >
+        {children}
+      </span>
     </button>
   );
 };
+
+

@@ -15,7 +15,7 @@ export const Navbar = () => {
       setIsScrolled(window.scrollY > 40);
 
       // Track active section for nav highlight
-      const sections = ['projects', 'about', 'experience', 'expertise', 'contact'];
+      const sections = ['hero', 'about', 'projects', 'experience', 'expertise', 'contact'];
       const scrollPosition = window.scrollY + 220;
 
       for (const sectionId of sections) {
@@ -48,12 +48,15 @@ export const Navbar = () => {
   }, [mobileMenuOpen]);
 
   const navLinks = [
-    { label: 'WORK', href: '#projects', id: 'projects' },
+    { label: 'HOME', href: '#hero', id: 'hero' },
     { label: 'ABOUT', href: '#about', id: 'about' },
+    { label: 'WORK', href: '#projects', id: 'projects' },
     { label: 'EXPERIENCE', href: '#experience', id: 'experience' },
     { label: 'EXPERTISE', href: '#expertise', id: 'expertise' },
     { label: 'CONTACT', href: '#contact', id: 'contact' }
   ];
+
+
 
   const handleNavClick = (e, href) => {
     e.preventDefault();
@@ -81,16 +84,14 @@ export const Navbar = () => {
       />
 
       <header
-        className={`fixed top-0 left-0 w-full z-[90] transition-all duration-500 px-4 sm:px-6 md:px-8 ${
-          isScrolled ? 'py-3' : 'py-5'
-        }`}
+        className={`fixed top-0 left-0 w-full z-[90] transition-all duration-500 px-4 sm:px-6 md:px-8 ${isScrolled ? 'py-3' : 'py-5'
+          }`}
       >
         <div
-          className={`portfolio-container transition-all duration-300 ease-out flex items-center justify-between border ${
-            isScrolled
+          className={`portfolio-container transition-all duration-300 ease-out flex items-center justify-between border ${isScrolled
               ? 'bg-[var(--color-surface)]/90 backdrop-blur-2xl border-[var(--color-border)] rounded-full px-5 sm:px-6 py-2.5 shadow-xl shadow-purple-500/5'
               : 'bg-transparent border-transparent px-2 sm:px-4 py-1.5 rounded-full'
-          }`}
+            }`}
         >
           {/* Brand Wordmark */}
           <a
@@ -116,11 +117,10 @@ export const Navbar = () => {
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`text-xs font-mono font-semibold tracking-widest transition-all relative py-1 ${
-                    isActive
+                  className={`text-xs font-mono font-semibold tracking-widest transition-all relative py-1 ${isActive
                       ? 'text-[var(--color-primary-bright)] font-bold'
                       : 'text-[var(--color-text-muted)] hover:text-[var(--color-text)]'
-                  }`}
+                    }`}
                 >
                   {link.label}
                   {isActive && (
