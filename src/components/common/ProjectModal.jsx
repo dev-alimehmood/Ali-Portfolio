@@ -74,7 +74,7 @@ export const ProjectModal = ({ project, onClose }) => {
 
         {/* Visual Preview Banner inside Modal */}
         <div className="mb-8 rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-xl max-h-[340px]">
-          <ProjectVisualComposition type={project.visualType} />
+          <ProjectVisualComposition type={project.visualType} project={project} />
         </div>
 
         {/* Project Architecture Overview */}

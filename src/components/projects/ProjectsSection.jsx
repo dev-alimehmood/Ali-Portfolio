@@ -25,7 +25,7 @@ export const ProjectsSection = () => {
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[var(--color-primary-glow)] rounded-full blur-[160px] pointer-events-none opacity-20" />
 
       <div className="portfolio-container relative z-10">
-        
+
         {/* Section Editorial Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-6">
           <RevealBottom>
@@ -56,9 +56,8 @@ export const ProjectsSection = () => {
               >
                 {/* Text Content Column (Revealing Bottom to Top or Right based on layout) */}
                 <RevealBottom
-                  className={`lg:col-span-5 space-y-6 ${
-                    isEven ? 'lg:order-1' : 'lg:order-2'
-                  }`}
+                  className={`lg:col-span-5 space-y-6 ${isEven ? 'lg:order-1' : 'lg:order-2'
+                    }`}
                   distance={45}
                 >
                   <div className="flex items-center gap-3">
@@ -130,16 +129,21 @@ export const ProjectsSection = () => {
 
                 {/* Visual Composition Column (Revealing from Right) */}
                 <RevealRight
-                  className={`lg:col-span-7 ${
-                    isEven ? 'lg:order-2' : 'lg:order-1'
-                  }`}
+                  className={`lg:col-span-7 ${isEven ? 'lg:order-2' : 'lg:order-1'
+                    }`}
                   distance={60}
                 >
                   <div
-                    onClick={() => setSelectedProject(project)}
+                    onClick={() => {
+                      if (project.liveUrl) {
+                        window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
+                      } else {
+                        setSelectedProject(project);
+                      }
+                    }}
                     className="relative rounded-[24px] overflow-hidden cursor-pointer transform group-hover:scale-[1.015] transition-transform duration-500 ease-out shadow-2xl border border-[var(--color-border)] group-hover:border-[var(--color-primary-bright)]/50"
                   >
-                    <ProjectVisualComposition type={project.visualType} />
+                    <ProjectVisualComposition type={project.visualType} project={project} />
                   </div>
                 </RevealRight>
               </div>

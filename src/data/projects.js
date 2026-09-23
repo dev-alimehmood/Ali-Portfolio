@@ -16,7 +16,7 @@ export const PROJECTS_DATA = [
     ],
     accentColor: "#9400D3",
     visualType: "chat",
-    liveUrl: "https://pulsechat-demo.vercel.app",
+    liveUrl: "https://pulsechat-ali.netlify.app/login",
     githubUrl: "https://github.com/alimehmood/pulsechat"
   },
   {
@@ -56,32 +56,13 @@ export const PROJECTS_DATA = [
     ],
     accentColor: "#8000C9",
     visualType: "corporate",
-    liveUrl: "https://influxcomms.com",
+    liveUrl: "https://influx-communication.netlify.app/",
     githubUrl: "https://github.com/alimehmood/influx-communications"
   },
-  {
-    id: "zamzam-hr",
-    number: "04",
-    title: "ZAMZAM HR SOLUTIONS",
-    tagline: "Enterprise HR Portal Component System",
-    description: "Built reusable React component architectures and optimized user experience across company service and contact platforms.",
-    longDescription: "Architected modular frontend infrastructure including interactive company profile section, multi-tiered service offerings, and validated contact intake forms.",
-    technologies: ["React.js", "JavaScript", "Tailwind CSS"],
-    category: "Frontend / Enterprise UI",
-    highlights: [
-      "Modular, reusable React component architecture",
-      "Interactive company profile & showcase modules",
-      "Structured HR service presentation layout",
-      "Seamless responsive navigation & user touchpoints"
-    ],
-    accentColor: "#9400D3",
-    visualType: "hr",
-    liveUrl: "https://zamzam-hr-solutions.vercel.app",
-    githubUrl: "https://github.com/alimehmood/zamzam-hr"
-  },
+  
   {
     id: "smartcv",
-    number: "05",
+    number: "04",
     title: "SMARTCV",
     tagline: "Full-Stack Resume Builder & Document Engine",
     description: "Full-stack resume builder featuring dynamic step-by-step form inputs and automated PDF document generation.",
@@ -98,5 +79,26 @@ export const PROJECTS_DATA = [
     visualType: "cv",
     liveUrl: "https://smartcv-builder.vercel.app",
     githubUrl: "https://github.com/alimehmood/smartcv"
+  }
+  ,
+  {
+    id: "zamzam-hr",
+    number: "05",
+    title: "ZAMZAM HR SOLUTIONS",
+    tagline: "Enterprise HR Portal Component System",
+    description: "Built reusable React component architectures and optimized user experience across company service and contact platforms.",
+    longDescription: "Architected modular frontend infrastructure including interactive company profile section, multi-tiered service offerings, and validated contact intake forms.",
+    technologies: ["React.js", "JavaScript", "Tailwind CSS"],
+    category: "Frontend / Enterprise UI",
+    highlights: [
+      "Modular, reusable React component architecture",
+      "Interactive company profile & showcase modules",
+      "Structured HR service presentation layout",
+      "Seamless responsive navigation & user touchpoints"
+    ],
+    accentColor: "#9400D3",
+    visualType: "hr",
+    liveUrl: "https://zamzamhrsolutions.netlify.app/",
+    githubUrl: "https://github.com/alimehmood/zamzam-hr"
   }
 ];
