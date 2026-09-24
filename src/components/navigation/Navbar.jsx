@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
 import { ThemeToggle } from '../common/ThemeToggle';
 import { MagneticButton } from '../common/MagneticButton';
+import { ContactPurposeModal } from '../common/ContactPurposeModal';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isPurposeModalOpen, setIsPurposeModalOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const scrollProgress = useScrollProgress();
 
@@ -56,8 +58,6 @@ export const Navbar = () => {
     { label: 'CONTACT', href: '#contact', id: 'contact' }
   ];
 
-
-
   const handleNavClick = (e, href) => {
     e.preventDefault();
     setMobileMenuOpen(false);
@@ -75,8 +75,19 @@ export const Navbar = () => {
     }
   };
 
+  const handleOpenConversationModal = (e) => {
+    if (e) e.preventDefault();
+    setMobileMenuOpen(false);
+    setIsPurposeModalOpen(true);
+  };
+
   return (
     <>
+      <ContactPurposeModal
+        isOpen={isPurposeModalOpen}
+        onClose={() => setIsPurposeModalOpen(false)}
+      />
+
       {/* Scroll Progress Bar at Top */}
       <div
         className="fixed top-0 left-0 h-[2.5px] bg-gradient-to-r from-[var(--color-primary-bright)] via-purple-500 to-emerald-400 z-[100] transition-all duration-150 pointer-events-none"
@@ -135,8 +146,7 @@ export const Navbar = () => {
           <div className="hidden md:flex items-center gap-3">
             <ThemeToggle />
             <MagneticButton
-              href="#contact"
-              onClick={(e) => handleNavClick(e, '#contact')}
+              onClick={handleOpenConversationModal}
               className="px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-widest bg-[var(--color-primary)] text-white hover:bg-[var(--color-primary-bright)] transition-all shadow-lg shadow-[var(--color-primary-glow)] group"
             >
               <span>LET'S TALK</span>
@@ -191,14 +201,13 @@ export const Navbar = () => {
           </div>
 
           <div className="space-y-4 pt-4 border-t border-[var(--color-border)]">
-            <a
-              href="#contact"
-              onClick={(e) => handleNavClick(e, '#contact')}
+            <button
+              onClick={handleOpenConversationModal}
               className="w-full py-4 text-center rounded-full text-xs font-mono font-bold uppercase tracking-widest bg-[var(--color-primary)] text-white shadow-xl flex items-center justify-center gap-2"
             >
               <span>START A CONVERSATION</span>
               <ArrowUpRight className="w-4 h-4" />
-            </a>
+            </button>
             <p className="text-[10px] font-mono text-center text-[var(--color-text-dim)] uppercase tracking-wider">
               ALI MEHMOOD // LAHORE, PAKISTAN
             </p>

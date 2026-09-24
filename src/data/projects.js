@@ -19,26 +19,51 @@ export const PROJECTS_DATA = [
     liveUrl: "https://pulsechat-ali.netlify.app/login",
     githubUrl: "https://github.com/alimehmood/pulsechat"
   },
+
   {
-    id: "doctor-appointment",
+    id: "provilynx",
     number: "02",
-    title: "DOCTOR APPOINTMENT SYSTEM",
-    tagline: "Hybrid Mobile Healthcare Solution",
-    description: "Hybrid mobile application designed for seamless medical appointment scheduling and patient management.",
-    longDescription: "Developed a cross-platform mobile solution for patient appointment booking, doctor schedule management, and backend record synchronization.",
-    technologies: ["Angular", "Ionic", "PHP Slim", "MySQL"],
-    category: "Hybrid Mobile / Healthcare",
+    title: "PROVILYNX",
+    tagline: "SaaS Email Infrastructure & Unified Inbox Platform",
+    description: "Developed a modern SaaS marketing and product presentation website with dynamic API integrations for email infrastructure, unified inbox, and business communication solutions.",
+    longDescription: "Built a premium SaaS-style product website with reusable React architecture, responsive interfaces, and REST API integrations for fetching and submitting dynamic data. Implemented GET and POST API workflows, frontend-backend communication, dynamic form handling, product and service presentation, provider integrations, pricing, and interactive AI-focused experiences.",
+    technologies: ["React.js", "JavaScript", "Tailwind CSS", "Framer Motion", "REST APIs"],
+    category: "Full Stack / SaaS",
     highlights: [
-      "Cross-platform hybrid UI built with Ionic and Angular",
-      "Lightweight PHP Slim REST API backend architecture",
-      "Structured MySQL database schema for appointment slots",
-      "Intuitive booking and schedule confirmation user flow"
+      "Reusable and scalable React component architecture",
+      "REST API integration for dynamic data fetching and submission",
+      "GET and POST API workflows with frontend-backend communication",
+      "Dynamic contact and inquiry form integration",
+      "SaaS product and service presentation modules",
+      "Microsoft 365, IMAP/SMTP and Unified Inbox solution showcase",
+      "Interactive provider integration and AI-focused sections",
+      "Responsive navigation, layouts and conversion-focused user experience"
     ],
-    accentColor: "#C44DFF",
-    visualType: "mobile",
-    liveUrl: "https://doctor-care-app.vercel.app",
-    githubUrl: "https://github.com/alimehmood/doctor-appointment-app"
+    accentColor: "#0052CC",
+    visualType: "saas",
+    liveUrl: "https://provilynx.com/",
+    githubUrl: "https://github.com/ProviloopsInternational/provilynx-website"
   },
+  // {
+  //   id: "doctor-appointment",
+  //   number: "02",
+  //   title: "DOCTOR APPOINTMENT SYSTEM",
+  //   tagline: "Hybrid Mobile Healthcare Solution",
+  //   description: "Hybrid mobile application designed for seamless medical appointment scheduling and patient management.",
+  //   longDescription: "Developed a cross-platform mobile solution for patient appointment booking, doctor schedule management, and backend record synchronization.",
+  //   technologies: ["Angular", "Ionic", "PHP Slim", "MySQL"],
+  //   category: "Hybrid Mobile / Healthcare",
+  //   highlights: [
+  //     "Cross-platform hybrid UI built with Ionic and Angular",
+  //     "Lightweight PHP Slim REST API backend architecture",
+  //     "Structured MySQL database schema for appointment slots",
+  //     "Intuitive booking and schedule confirmation user flow"
+  //   ],
+  //   accentColor: "#C44DFF",
+  //   visualType: "mobile",
+  //   liveUrl: "https://doctor-care-app.vercel.app",
+  //   githubUrl: "https://github.com/alimehmood/doctor-appointment-app"
+  // },
   {
     id: "influx-communications",
     number: "03",
@@ -59,7 +84,7 @@ export const PROJECTS_DATA = [
     liveUrl: "https://influx-communication.netlify.app/",
     githubUrl: "https://github.com/alimehmood/influx-communications"
   },
-  
+
   {
     id: "smartcv",
     number: "04",
