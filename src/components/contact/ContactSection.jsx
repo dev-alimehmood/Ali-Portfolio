@@ -1,10 +1,62 @@
 import React, { useState } from 'react';
-import { ArrowUpRight, Mail, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Mail, Sparkles, ChevronDown } from 'lucide-react';
 import { MagneticButton } from '../common/MagneticButton';
 import { GithubIcon, LinkedinIcon } from '../common/SocialIcons';
 import { PROFILE_DATA } from '../../data/profile';
 import { RevealBottom, RevealRight } from '../common/ScrollAnimations';
 import { ContactPurposeModal } from '../common/ContactPurposeModal';
+
+const FAQS_DATA = [
+  {
+    question: "What types of services and projects do you specialize in?",
+    answer: "I specialize in Full Stack Web Development (MERN Stack: React, Next.js, Node.js, Express, NestJS, MongoDB) and AI Automation engineering (Autonomous AI Agents, custom API integrations, Webhooks, Make/n8n workflows, and real-time Socket.io applications)."
+  },
+  {
+    question: "How long does a typical project take from start to launch?",
+    answer: "Timelines depend on project complexity. MVP web applications and AI workflow automations typically take 1 to 3 weeks, while comprehensive full-scale digital products or enterprise platforms usually take 4 to 8 weeks."
+  },
+  {
+    question: "What is your approach to communication and updates during development?",
+    answer: "I believe in transparent, frequent updates. I provide regular progress demos, keep code repositories organized with full documentation, and communicate via Slack, Email, or WhatsApp according to client preference."
+  },
+  {
+    question: "Are you available for full-time, contract, or freelance work?",
+    answer: "Yes! I am open to full-time remote developer roles, fixed-scope contract projects, and freelance AI automation consultations."
+  },
+  {
+    question: "How do we get started on a project together?",
+    answer: "Simply click the 'START A CONVERSATION' button above or email me directly. Choose your message purpose, and we can schedule a 1-on-1 discovery call to align on project requirements, scope, and timeline."
+  }
+];
+
+const FaqItem = ({ faq, index }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <RevealBottom delay={index * 0.08}>
+      <div className="rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/60 overflow-hidden transition-all duration-300 hover:border-[var(--color-primary-bright)]/60 shadow-sm">
+        <button
+          type="button"
+          onClick={() => setIsOpen(!isOpen)}
+          className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer select-none"
+        >
+          <span className="text-sm sm:text-base font-bold text-[var(--color-text)] tracking-tight">
+            {faq.question}
+          </span>
+          <div className={`p-2 rounded-full border border-[var(--color-border)] text-[var(--color-primary-bright)] transition-transform duration-300 shrink-0 ${isOpen ? 'rotate-180 bg-[var(--color-primary)] text-white border-transparent' : 'bg-[var(--color-surface)]'}`}>
+            <ChevronDown className="w-4 h-4" />
+          </div>
+        </button>
+
+        {isOpen && (
+          <div className="px-5 pb-6 sm:px-6 sm:pb-6 pt-0 text-xs sm:text-sm text-[var(--color-text-muted)] leading-relaxed border-t border-[var(--color-border)]/40 font-normal animate-fade-in">
+            <p className="pt-3">{faq.answer}</p>
+          </div>
+        )}
+      </div>
+    </RevealBottom>
+  );
+};
 
 export const ContactSection = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,7 +65,7 @@ export const ContactSection = () => {
     <>
       <section
         id="contact"
-        className="py-24 md:py-36 border-t border-[var(--color-border)] relative overflow-hidden"
+        className="py-16 md:py-24 relative overflow-hidden"
       >
         {/* Background Large Violet Radial Glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--color-primary-glow)] rounded-full blur-[160px] pointer-events-none opacity-50" />
@@ -94,6 +146,27 @@ export const ContactSection = () => {
               </div>
             </RevealRight>
 
+          </div>
+
+          {/* Frequently Asked Questions (Accordion FAQs) */}
+          <div className="mt-20 sm:mt-28 pt-16 border-t border-[var(--color-border)] max-w-4xl mx-auto">
+            <RevealBottom className="text-center space-y-3 mb-12">
+              <div className="flex items-center justify-center gap-2 text-xs font-mono text-[var(--color-primary-bright)] uppercase tracking-widest font-semibold">
+                <Sparkles className="w-3.5 h-3.5 text-[var(--color-primary-bright)]" /> COMMON INQUIRIES
+              </div>
+              <h3 className="text-2xl sm:text-4xl font-extrabold font-display tracking-tight text-[var(--color-text)] uppercase">
+                FREQUENTLY ASKED QUESTIONS
+              </h3>
+              <p className="text-xs sm:text-sm text-[var(--color-text-muted)] max-w-lg mx-auto">
+                Got questions before starting a project or scheduling a discovery call? Here are answers to common client questions.
+              </p>
+            </RevealBottom>
+
+            <div className="space-y-4">
+              {FAQS_DATA.map((faq, index) => (
+                <FaqItem key={index} faq={faq} index={index} />
+              ))}
+            </div>
           </div>
 
         </div>

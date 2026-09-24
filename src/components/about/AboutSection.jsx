@@ -1,4 +1,5 @@
 import React from 'react';
+import { Download } from 'lucide-react';
 import { PROFILE_DATA } from '../../data/profile';
 import { RevealBottom, RevealRight, StaggerContainer, StaggerItemBottom } from '../common/ScrollAnimations';
 
@@ -6,10 +7,10 @@ export const AboutSection = () => {
   return (
     <section
       id="about"
-      className="py-24 md:py-36 border-t border-[var(--color-border)] relative"
+      className="py-16 md:py-24 relative"
     >
       <div className="portfolio-container">
-        
+
         {/* Section Header */}
         <RevealBottom className="flex items-center gap-3 mb-8">
           <span className="editorial-label">01 / ABOUT</span>
@@ -42,7 +43,7 @@ export const AboutSection = () => {
 
         {/* Metric Cards (Staggered Bottom to Top) */}
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12 border-t border-[var(--color-border)]">
-          
+
           <StaggerItemBottom className="space-y-3 p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group">
             <div className="text-3xl sm:text-4xl font-black font-display text-[var(--color-text)] tracking-tight">
               1.5<span className="text-[var(--color-primary-bright)]">+</span> <span className="text-sm font-mono text-[var(--color-text-muted)] font-normal">YEARS</span>

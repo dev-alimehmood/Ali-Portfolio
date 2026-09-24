@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Sparkles, Download } from 'lucide-react';
 import { ThemeToggle } from '../common/ThemeToggle';
 import { MagneticButton } from '../common/MagneticButton';
 import { ContactPurposeModal } from '../common/ContactPurposeModal';
+import { PROFILE_DATA } from '../../data/profile';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
 
 export const Navbar = () => {
@@ -143,7 +144,17 @@ export const Navbar = () => {
           </nav>
 
           {/* Controls & CTA */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2.5">
+            <a
+              href={PROFILE_DATA.resume || '/resume.pdf'}
+              download="Ali_Mehmood_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-widest border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:text-white hover:bg-[var(--color-primary)] hover:border-transparent transition-all flex items-center gap-1.5 shadow-sm group"
+            >
+              <Download className="w-3.5 h-3.5 text-[var(--color-primary-bright)] group-hover:text-white group-hover:translate-y-0.5 transition-transform" />
+              <span>CV</span>
+            </a>
             <ThemeToggle />
             <MagneticButton
               onClick={handleOpenConversationModal}
@@ -155,12 +166,22 @@ export const Navbar = () => {
           </div>
 
           {/* Mobile Actions & Menu Toggle */}
-          <div className="flex items-center gap-2.5 md:hidden">
+          <div className="flex items-center gap-2 md:hidden">
+            <a
+              href={PROFILE_DATA.resume || '/resume.pdf'}
+              download="Ali_Mehmood_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-1.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] flex items-center gap-1"
+            >
+              <Download className="w-3 h-3 text-[var(--color-primary-bright)]" />
+              <span>CV</span>
+            </a>
             <ThemeToggle />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label="Toggle Navigation Menu"
-              className="p-2.5 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] shadow-md"
+              className="p-2 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] shadow-md"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -200,7 +221,18 @@ export const Navbar = () => {
             ))}
           </div>
 
-          <div className="space-y-4 pt-4 border-t border-[var(--color-border)]">
+          <div className="space-y-3 pt-4 border-t border-[var(--color-border)]">
+            <a
+              href={PROFILE_DATA.resume || '/resume.pdf'}
+              download="Ali_Mehmood_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full py-3.5 text-center rounded-full text-xs font-mono font-bold uppercase tracking-widest border border-purple-500/40 bg-purple-950/40 text-purple-300 shadow-md flex items-center justify-center gap-2"
+            >
+              <Download className="w-4 h-4 text-purple-400" />
+              <span>DOWNLOAD RESUME (CV)</span>
+            </a>
+
             <button
               onClick={handleOpenConversationModal}
               className="w-full py-4 text-center rounded-full text-xs font-mono font-bold uppercase tracking-widest bg-[var(--color-primary)] text-white shadow-xl flex items-center justify-center gap-2"

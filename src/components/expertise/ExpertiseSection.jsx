@@ -21,7 +21,7 @@ export const ExpertiseSection = () => {
   return (
     <section
       id="expertise"
-      className="py-24 md:py-36 border-t border-[var(--color-border)] relative overflow-hidden"
+      className="py-16 md:py-24 relative overflow-hidden"
     >
       {/* Background Soft Glow */}
       <div className="absolute top-1/2 left-0 w-[450px] h-[450px] bg-[var(--color-primary-glow)] rounded-full blur-[160px] pointer-events-none opacity-20" />

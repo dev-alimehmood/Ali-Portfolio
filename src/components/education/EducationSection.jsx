@@ -5,7 +5,7 @@ import { RevealBottom, StaggerContainer, StaggerItemBottom } from '../common/Scr
 
 export const EducationSection = () => {
   return (
-    <section className="py-20 md:py-28 border-t border-[var(--color-border)] relative">
+    <section className="py-14 md:py-20 relative">
       <div className="portfolio-container">
         
         {/* Section Header */}
@@ -21,7 +21,7 @@ export const EducationSection = () => {
         </RevealBottom>
 
         {/* Minimal Editorial Rows */}
-        <StaggerContainer className="divide-y divide-[var(--color-border)] border-t border-b border-[var(--color-border)]">
+        <StaggerContainer className="divide-y divide-[var(--color-border)] border-t border-b border-[var(--color-border)]/40">
           {EDUCATION_DATA.map((item, idx) => (
             <StaggerItemBottom key={idx} distance={35}>
               <div

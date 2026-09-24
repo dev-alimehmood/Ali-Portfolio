@@ -55,7 +55,7 @@ export const ExperienceSection = () => {
     <section
       id="experience"
       ref={sectionRef}
-      className="py-24 md:py-36 border-t border-[var(--color-border)] relative"
+      className="py-16 md:py-24 relative"
     >
       <div className="portfolio-container">
         

@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import Lenis from 'lenis';
 import { CustomCursor } from '../components/common/CustomCursor';
+import { FloatingWhatsappWidget } from '../components/common/FloatingWhatsappWidget';
+import { BackToTopButton } from '../components/common/BackToTopButton';
 import { Navbar } from '../components/navigation/Navbar';
 import { HeroSection } from '../components/hero/HeroSection';
 import { AboutSection } from '../components/about/AboutSection';
@@ -41,6 +43,12 @@ export const Home = () => {
     <div className="relative min-h-screen bg-[var(--color-bg)] text-[var(--color-text)] transition-colors duration-500">
       {/* Custom Desktop Cursor */}
       <CustomCursor />
+
+      {/* Floating WhatsApp Widget on Bottom Left */}
+      <FloatingWhatsappWidget />
+
+      {/* Back To Top Button on Bottom Right */}
+      <BackToTopButton />
 
       {/* Floating Navigation */}
       <Navbar />

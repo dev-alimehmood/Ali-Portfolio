@@ -91,7 +91,7 @@ export const TechUniverse = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-36 border-t border-[var(--color-border)] relative overflow-hidden">
+    <section ref={sectionRef} className="py-16 md:py-24 relative overflow-hidden">
       <div className="portfolio-container">
         
         {/* Section Header */}

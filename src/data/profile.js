@@ -3,6 +3,8 @@ export const PROFILE_DATA = {
   title: "Full Stack Developer | AI Automation Engineer",
   location: "Lahore, Pakistan",
   email: "dev.alimehmood@gmail.com",
+  whatsapp: "+923255565581",
+  resume: "/Ali_Mehmood_Resume.pdf",
   linkedin: "https://linkedin.com/in/dev-alimehmood",
   github: "https://github.com/dev-alimehmood",
   status: "AVAILABLE FOR OPPORTUNITIES",

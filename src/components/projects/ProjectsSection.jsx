@@ -19,7 +19,7 @@ export const ProjectsSection = () => {
   return (
     <section
       id="projects"
-      className="py-24 md:py-36 border-t border-[var(--color-border)] relative overflow-hidden"
+      className="py-16 md:py-24 relative overflow-hidden"
     >
       {/* Background Soft Glow */}
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[var(--color-primary-glow)] rounded-full blur-[160px] pointer-events-none opacity-20" />
