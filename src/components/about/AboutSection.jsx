@@ -1,7 +1,7 @@
 import React from 'react';
-import { Download } from 'lucide-react';
 import { PROFILE_DATA } from '../../data/profile';
 import { RevealBottom, RevealRight, StaggerContainer, StaggerItemBottom } from '../common/ScrollAnimations';
+import { TiltCard } from '../common/TiltCard';
 
 export const AboutSection = () => {
   return (
@@ -41,55 +41,63 @@ export const AboutSection = () => {
           </div>
         </div>
 
-        {/* Metric Cards (Staggered Bottom to Top) */}
+        {/* Metric Cards (Staggered Bottom to Top with 3D Tilt) */}
         <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12 border-t border-[var(--color-border)]">
 
-          <StaggerItemBottom className="space-y-3 p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group">
-            <div className="text-3xl sm:text-4xl font-black font-display text-[var(--color-text)] tracking-tight">
-              1.5<span className="text-[var(--color-primary-bright)]">+</span> <span className="text-sm font-mono text-[var(--color-text-muted)] font-normal">YEARS</span>
-            </div>
-            <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
-              EXPERIENCE
-            </div>
-            <div className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-              Full Stack Web &amp; API Systems
-            </div>
+          <StaggerItemBottom>
+            <TiltCard className="space-y-3 p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group">
+              <div className="text-3xl sm:text-4xl font-black font-display text-[var(--color-text)] tracking-tight">
+                1.5<span className="text-[var(--color-primary-bright)]">+</span> <span className="text-sm font-mono text-[var(--color-text-muted)] font-normal">YEARS</span>
+              </div>
+              <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
+                EXPERIENCE
+              </div>
+              <div className="text-xs text-[var(--color-text-muted)] leading-relaxed">
+                Full Stack Web &amp; API Systems
+              </div>
+            </TiltCard>
           </StaggerItemBottom>
 
-          <StaggerItemBottom className="space-y-3 p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group">
-            <div className="text-2xl sm:text-3xl font-black font-display text-[var(--color-text)] tracking-tight truncate">
-              FULL <span className="text-[var(--color-primary-bright)]">STACK</span>
-            </div>
-            <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
-              REACT &amp; NESTJS
-            </div>
-            <div className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-              Node.js, Next.js &amp; MongoDB
-            </div>
+          <StaggerItemBottom>
+            <TiltCard className="space-y-3 p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group">
+              <div className="text-2xl sm:text-3xl font-black font-display text-[var(--color-text)] tracking-tight truncate">
+                FULL <span className="text-[var(--color-primary-bright)]">STACK</span>
+              </div>
+              <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
+                REACT &amp; NESTJS
+              </div>
+              <div className="text-xs text-[var(--color-text-muted)] leading-relaxed">
+                Node.js, Next.js &amp; MongoDB
+              </div>
+            </TiltCard>
           </StaggerItemBottom>
 
-          <StaggerItemBottom className="space-y-3 p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group">
-            <div className="text-2xl sm:text-3xl font-black font-display text-[var(--color-text)] tracking-tight truncate">
-              AI <span className="text-[var(--color-primary-bright)]">AGENTS</span>
-            </div>
-            <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
-              AUTOMATION
-            </div>
-            <div className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-              Webhooks &amp; Workflow Systems
-            </div>
+          <StaggerItemBottom>
+            <TiltCard className="space-y-3 p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group">
+              <div className="text-2xl sm:text-3xl font-black font-display text-[var(--color-text)] tracking-tight truncate">
+                AI <span className="text-[var(--color-primary-bright)]">AGENTS</span>
+              </div>
+              <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
+                AUTOMATION
+              </div>
+              <div className="text-xs text-[var(--color-text-muted)] leading-relaxed">
+                Webhooks &amp; Workflow Systems
+              </div>
+            </TiltCard>
           </StaggerItemBottom>
 
-          <StaggerItemBottom className="space-y-3 p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group">
-            <div className="text-2xl sm:text-3xl font-black font-display text-[var(--color-text)] tracking-tight truncate">
-              REAL <span className="text-[var(--color-primary-bright)]">TIME</span>
-            </div>
-            <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
-              SOCKET.IO &amp; APIS
-            </div>
-            <div className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-              Low-latency Systems
-            </div>
+          <StaggerItemBottom>
+            <TiltCard className="space-y-3 p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group">
+              <div className="text-2xl sm:text-3xl font-black font-display text-[var(--color-text)] tracking-tight truncate">
+                REAL <span className="text-[var(--color-primary-bright)]">TIME</span>
+              </div>
+              <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
+                SOCKET.IO &amp; APIS
+              </div>
+              <div className="text-xs text-[var(--color-text-muted)] leading-relaxed">
+                Low-latency Systems
+              </div>
+            </TiltCard>
           </StaggerItemBottom>
 
         </StaggerContainer>
