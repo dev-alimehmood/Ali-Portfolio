@@ -2,6 +2,7 @@ import React from 'react';
 import { PROFILE_DATA } from '../../data/profile';
 import { RevealBottom, RevealRight, StaggerContainer, StaggerItemBottom } from '../common/ScrollAnimations';
 import { TiltCard } from '../common/TiltCard';
+import { AnimatedCounter } from '../common/AnimatedCounter';
 
 export const AboutSection = () => {
   return (
@@ -41,16 +42,20 @@ export const AboutSection = () => {
           </div>
         </div>
 
-        {/* Metric Cards (Staggered Bottom to Top with 3D Tilt) */}
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-12 border-t border-[var(--color-border)]">
+        {/* Metric Cards (Staggered Bottom to Top with 3D Tilt & Animated Counters) */}
+        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-6 items-stretch">
 
-          <StaggerItemBottom>
-            <TiltCard className="space-y-3 p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group">
-              <div className="text-3xl sm:text-4xl font-black font-display text-[var(--color-text)] tracking-tight">
-                1.5<span className="text-[var(--color-primary-bright)]">+</span> <span className="text-sm font-mono text-[var(--color-text-muted)] font-normal">YEARS</span>
-              </div>
-              <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
-                EXPERIENCE
+          <StaggerItemBottom className="h-full">
+            <TiltCard className="h-full p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group flex flex-col justify-between space-y-4">
+              <div className="space-y-2">
+                <div className="text-3xl sm:text-4xl font-black font-display text-[var(--color-text)] tracking-tight flex items-baseline gap-1">
+                  <AnimatedCounter value={1.5} decimals={1} duration={2} />
+                  <span className="text-[var(--color-primary-bright)]">+</span>
+                  <span className="text-xs font-mono text-[var(--color-text-muted)] font-normal uppercase ml-1">YEARS</span>
+                </div>
+                <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
+                  EXPERIENCE
+                </div>
               </div>
               <div className="text-xs text-[var(--color-text-muted)] leading-relaxed">
                 Full Stack Web &amp; API Systems
@@ -58,44 +63,54 @@ export const AboutSection = () => {
             </TiltCard>
           </StaggerItemBottom>
 
-          <StaggerItemBottom>
-            <TiltCard className="space-y-3 p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group">
-              <div className="text-2xl sm:text-3xl font-black font-display text-[var(--color-text)] tracking-tight truncate">
-                FULL <span className="text-[var(--color-primary-bright)]">STACK</span>
-              </div>
-              <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
-                REACT &amp; NESTJS
+          <StaggerItemBottom className="h-full">
+            <TiltCard className="h-full p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group flex flex-col justify-between space-y-4">
+              <div className="space-y-2">
+                <div className="text-3xl sm:text-4xl font-black font-display text-[var(--color-text)] tracking-tight flex items-baseline gap-1">
+                  <AnimatedCounter value={15} decimals={0} duration={2} />
+                  <span className="text-[var(--color-primary-bright)]">+</span>
+                  <span className="text-xs font-mono text-[var(--color-text-muted)] font-normal uppercase ml-1">PROJECTS</span>
+                </div>
+                <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
+                  DELIVERED
+                </div>
               </div>
               <div className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-                Node.js, Next.js &amp; MongoDB
+                Web Apps, Dashboards &amp; Bots
               </div>
             </TiltCard>
           </StaggerItemBottom>
 
-          <StaggerItemBottom>
-            <TiltCard className="space-y-3 p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group">
-              <div className="text-2xl sm:text-3xl font-black font-display text-[var(--color-text)] tracking-tight truncate">
-                AI <span className="text-[var(--color-primary-bright)]">AGENTS</span>
-              </div>
-              <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
-                AUTOMATION
+          <StaggerItemBottom className="h-full">
+            <TiltCard className="h-full p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group flex flex-col justify-between space-y-4">
+              <div className="space-y-2">
+                <div className="text-3xl sm:text-4xl font-black font-display text-[var(--color-text)] tracking-tight flex items-baseline gap-1">
+                  <AnimatedCounter value={99.9} decimals={1} duration={2.5} suffix="%" />
+                  <span className="text-xs font-mono text-[var(--color-text-muted)] font-normal uppercase ml-1">UPTIME</span>
+                </div>
+                <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
+                  RELIABILITY
+                </div>
               </div>
               <div className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-                Webhooks &amp; Workflow Systems
+                High-availability Node &amp; NestJS backend
               </div>
             </TiltCard>
           </StaggerItemBottom>
 
-          <StaggerItemBottom>
-            <TiltCard className="space-y-3 p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group">
-              <div className="text-2xl sm:text-3xl font-black font-display text-[var(--color-text)] tracking-tight truncate">
-                REAL <span className="text-[var(--color-primary-bright)]">TIME</span>
-              </div>
-              <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
-                SOCKET.IO &amp; APIS
+          <StaggerItemBottom className="h-full">
+            <TiltCard className="h-full p-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)]/50 hover:border-[var(--color-primary-bright)] transition-all overflow-hidden group flex flex-col justify-between space-y-4">
+              <div className="space-y-2">
+                <div className="text-3xl sm:text-4xl font-black font-display text-[var(--color-text)] tracking-tight flex items-baseline gap-1">
+                  <AnimatedCounter value={100} decimals={0} duration={2} suffix="%" />
+                  <span className="text-xs font-mono text-[var(--color-text-muted)] font-normal uppercase ml-1">QUALITY</span>
+                </div>
+                <div className="text-xs font-mono font-bold tracking-wider uppercase text-[var(--color-primary-bright)]">
+                  CLEAN CODE
+                </div>
               </div>
               <div className="text-xs text-[var(--color-text-muted)] leading-relaxed">
-                Low-latency Systems
+                Modern TypeScript &amp; React Architecture
               </div>
             </TiltCard>
           </StaggerItemBottom>
@@ -106,4 +121,5 @@ export const AboutSection = () => {
     </section>
   );
 };
+
 

@@ -146,3 +146,109 @@ export const StaggerItemRight = ({
     </motion.div>
   );
 };
+
+/**
+ * Reveal with scale & fade animation
+ */
+export const RevealScale = ({
+  children,
+  delay = 0,
+  duration = 0.6,
+  initialScale = 0.85,
+  once = true,
+  className = ''
+}) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: initialScale }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once, margin: '-50px' }}
+      transition={{
+        duration,
+        delay,
+        ease: [0.215, 0.61, 0.355, 1.0]
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+/**
+ * Reveal from left to right when scrolled into view
+ */
+export const RevealLeft = ({
+  children,
+  delay = 0,
+  duration = 0.7,
+  distance = 60,
+  once = true,
+  className = ''
+}) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: -distance }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once, margin: '-50px' }}
+      transition={{
+        duration,
+        delay,
+        ease: [0.215, 0.61, 0.355, 1.0]
+      }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+/**
+ * Word by Word Reveal Animation
+ */
+export const TextWordReveal = ({
+  text = '',
+  className = '',
+  delay = 0,
+  stagger = 0.04
+}) => {
+  const words = text.split(' ');
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: stagger,
+        delayChildren: delay
+      }
+    }
+  };
+  const wordVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { ease: 'easeOut', duration: 0.4 }
+    }
+  };
+
+  return (
+    <motion.span
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: '-40px' }}
+      className={`inline-block ${className}`}
+    >
+      {words.map((word, idx) => (
+        <motion.span
+          key={idx}
+          variants={wordVariants}
+          className="inline-block mr-[0.28em]"
+        >
+          {word}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+};

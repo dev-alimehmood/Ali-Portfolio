@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDownRight, Sparkles, Send } from 'lucide-react';
+import { ArrowDownRight, Sparkles, FileText } from 'lucide-react';
 import { MagneticButton } from '../common/MagneticButton';
 import { ContactPurposeModal } from '../common/ContactPurposeModal';
+import { InteractiveResumeModal } from '../common/InteractiveResumeModal';
 import { PROFILE_DATA } from '../../data/profile';
 
 export const HeroContent = () => {
@@ -10,6 +11,7 @@ export const HeroContent = () => {
   const [displayText, setDisplayText] = useState("");
   const [isTypingComplete, setIsTypingComplete] = useState(false);
   const [isPurposeModalOpen, setIsPurposeModalOpen] = useState(false);
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   useEffect(() => {
     let index = 0;
@@ -34,6 +36,10 @@ export const HeroContent = () => {
       <ContactPurposeModal
         isOpen={isPurposeModalOpen}
         onClose={() => setIsPurposeModalOpen(false)}
+      />
+      <InteractiveResumeModal
+        isOpen={isResumeModalOpen}
+        onClose={() => setIsResumeModalOpen(false)}
       />
       <div className="flex flex-col justify-center space-y-5 md:space-y-6">
 
@@ -84,11 +90,11 @@ export const HeroContent = () => {
           </MagneticButton>
 
           <MagneticButton
-            onClick={() => setIsPurposeModalOpen(true)}
+            onClick={() => setIsResumeModalOpen(true)}
             className="px-6 py-3.5 sm:px-7 sm:py-4 rounded-full text-xs font-bold uppercase tracking-widest border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:border-[var(--color-primary-bright)] hover:text-[var(--color-primary-bright)] transition-colors group cursor-pointer"
           >
-            <span>LET'S CONNECT</span>
-            <Send className="w-3.5 h-3.5 ml-2 group-hover:translate-x-0.5 transition-transform" />
+            <span>VIEW CV</span>
+            <FileText className="w-3.5 h-3.5 ml-2 group-hover:scale-110 transition-transform text-[var(--color-primary-bright)]" />
           </MagneticButton>
         </motion.div>
 

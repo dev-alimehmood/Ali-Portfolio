@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ArrowUpRight, Sparkles, Download } from 'lucide-react';
+import { Menu, X, ArrowUpRight, Sparkles, Download, FileText } from 'lucide-react';
 import { ThemeToggle } from '../common/ThemeToggle';
 import { MagneticButton } from '../common/MagneticButton';
 import { ContactPurposeModal } from '../common/ContactPurposeModal';
+import { InteractiveResumeModal } from '../common/InteractiveResumeModal';
 import { PROFILE_DATA } from '../../data/profile';
 import { useScrollProgress } from '../../hooks/useScrollProgress';
 
@@ -10,6 +11,7 @@ export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isPurposeModalOpen, setIsPurposeModalOpen] = useState(false);
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('');
   const scrollProgress = useScrollProgress();
 
@@ -82,11 +84,22 @@ export const Navbar = () => {
     setIsPurposeModalOpen(true);
   };
 
+  const handleOpenResumeModal = (e) => {
+    if (e) e.preventDefault();
+    setMobileMenuOpen(false);
+    setIsResumeModalOpen(true);
+  };
+
   return (
     <>
       <ContactPurposeModal
         isOpen={isPurposeModalOpen}
         onClose={() => setIsPurposeModalOpen(false)}
+      />
+
+      <InteractiveResumeModal
+        isOpen={isResumeModalOpen}
+        onClose={() => setIsResumeModalOpen(false)}
       />
 
       {/* Scroll Progress Bar at Top */}
@@ -145,16 +158,13 @@ export const Navbar = () => {
 
           {/* Controls & CTA */}
           <div className="hidden md:flex items-center gap-2.5">
-            <a
-              href={PROFILE_DATA.resume || '/resume.pdf'}
-              download="Ali_Mehmood_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-widest border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:text-white hover:bg-[var(--color-primary)] hover:border-transparent transition-all flex items-center gap-1.5 shadow-sm group"
+            <button
+              onClick={handleOpenResumeModal}
+              className="px-4 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-widest border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)] hover:text-white hover:bg-[var(--color-primary)] hover:border-transparent transition-all flex items-center gap-1.5 shadow-sm group cursor-pointer"
             >
-              <Download className="w-3.5 h-3.5 text-[var(--color-primary-bright)] group-hover:text-white group-hover:translate-y-0.5 transition-transform" />
+              <FileText className="w-3.5 h-3.5 text-[var(--color-primary-bright)] group-hover:text-white transition-transform" />
               <span>CV</span>
-            </a>
+            </button>
             <ThemeToggle />
             <MagneticButton
               onClick={handleOpenConversationModal}
@@ -222,16 +232,13 @@ export const Navbar = () => {
           </div>
 
           <div className="space-y-3 pt-4 border-t border-[var(--color-border)]">
-            <a
-              href={PROFILE_DATA.resume || '/resume.pdf'}
-              download="Ali_Mehmood_Resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3.5 text-center rounded-full text-xs font-mono font-bold uppercase tracking-widest border border-purple-500/40 bg-purple-950/40 text-purple-300 shadow-md flex items-center justify-center gap-2"
+            <button
+              onClick={handleOpenResumeModal}
+              className="w-full py-3.5 text-center rounded-full text-xs font-mono font-bold uppercase tracking-widest border border-purple-500/40 bg-purple-950/40 text-purple-300 shadow-md flex items-center justify-center gap-2 cursor-pointer"
             >
-              <Download className="w-4 h-4 text-purple-400" />
-              <span>DOWNLOAD RESUME (CV)</span>
-            </a>
+              <FileText className="w-4 h-4 text-purple-400" />
+              <span>VIEW RESUME (CV)</span>
+            </button>
 
             <button
               onClick={handleOpenConversationModal}
