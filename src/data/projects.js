@@ -16,7 +16,7 @@ export const PROJECTS_DATA = [
     ],
     accentColor: "#9400D3",
     visualType: "chat",
-    liveUrl: "https://pulsechat-ali.netlify.app/login",
+    liveUrl: "https://pulsechat-ali.netlify.app/",
     githubUrl: "https://github.com/alimehmood/pulsechat"
   },
 
